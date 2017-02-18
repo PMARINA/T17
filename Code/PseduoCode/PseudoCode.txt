@@ -1,0 +1,63 @@
+main class
+{
+check facing south or east
+if face south : face east
+check for dog
+if dog is at position 1{
+face south
+go forward
+turn right
+turn right
+room3()
+turn around
+left turn
+right turns
+go forward
+turn right
+turn right
+room2()
+turn around
+turn left 
+turn left
+go forward
+turn right
+room1()
+go forward
+turn left
+go forward
+turn left
+turn left room4()
+}
+if dog at position 2{ //farthest right
+room4()
+room3()//not including all the turning and navigating in between the rooms
+room2()
+room1()
+}
+if dog at position 3{//farthest south
+room4()
+room1()
+room2()
+room3()
+}
+}
+room1(){
+walk in
+loop to sweep across 
+each iteration of loop check flame
+}
+room2(){
+walk in
+loop to sweep across 
+each iteration of loop check flame
+}
+room3(){
+walk in
+loop to sweep across 
+each iteration of loop check flame
+}
+room4(){
+walk in
+loop to sweep across 
+each iteration of loop check flame
+}
