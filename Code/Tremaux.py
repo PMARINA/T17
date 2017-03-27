@@ -8,6 +8,7 @@ def main(past_moves,steps):
                 sub_alg(steps)
             else:
                 #go backwards
+            #mark path
         else:
             sub_alg(steps)
         steps+=1
@@ -17,6 +18,11 @@ def isPathMarked():
 def canGoForward():
 def canGoRight():
 def canGoLeft():
+def turnLeft():
+def turnRight():
+def moveForward():
+def moveBackward():
+
 def sub_alg(steps):
     forward=canGoForward()
     if forward==True:
@@ -42,6 +48,7 @@ def sub_alg(steps):
                 
 
 
+locationmap=[[0 for x in range(244)]for y in range(244)]
 steps=0
 past_moves=[]
 main(past_moves,steps)
