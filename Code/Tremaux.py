@@ -1,9 +1,13 @@
 def main(past_moves,steps):
     inmaze=True;
     while inmaze==True:
-        #rightdist=rightsensor.getDistance()
-        #leftdist=leftsensor.getDistance()
+        #pastrightdist=currentrightdist
+        #pastleftdist=currentleftdist
+        #currentrightdist=rightsensor.getDistance()
+        #currentleftdist=leftsensor.getDistance()
         #frontdist=frontsensor.getDistance()
+        if past_moves[-1]=="forward":
+            current
         junction = isAtJunction()
         if junction==True:
             marked = isPathMarked()
@@ -17,8 +21,12 @@ def main(past_moves,steps):
         steps+=1
     
 def isAtJunction():
-    
+    if abs(currentrightdist-lastrightdist)>5:
+        return true
+    else if abs(currentleftdist-lastleftdist)>5:
+        return true
 def isPathMarked():
+    
 def canGoForward():
 def canGoRight():
 def canGoLeft():
@@ -51,9 +59,13 @@ def sub_alg(steps):
                 main(past_moves,steps)
                 
 
-rightdist=0
-leftdist=0
+currentrightdist=0
+currentleftdist=0
+lastrightdist=0
+lastleftdist=0
 frontdist=0
+currentx=0 #change start x
+currenty=0 #change start y
 #rightsensor=Sensor(trig echo here)
 #leftsensor=Sensor(trig echo here)
 #frontsensor=Sensor(trig echo here)
