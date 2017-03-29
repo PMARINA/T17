@@ -16,9 +16,8 @@ class Sensor:
         millis2=int(round(time.time()*1000))
         return millis2-millis1
     def calcDistance(self):
-        #depends on what sensor we use
-        #implement later
-        #Also, do calibration depending on pi's accuracy (timewise)
+        dist1=self.getTime()*0.028+1.093
+        return dist1
     def getDistance(self):
         dist=self.calcDistance()
         return dist
