@@ -12,7 +12,7 @@ args = vars(ap.parse_args())
 image = cv2.imread(args["image"])
 
 # define the list of boundaries
-boundaries = [([245, 245, 245], [255, 255, 255])]
+boundaries = [([220, 220, 220], [255, 255, 255])]
 
 # loop over the boundaries
 #change
@@ -27,5 +27,5 @@ for (lower, upper) in boundaries:
     output = cv2.bitwise_and(image, image, mask = mask)
  
 	# show the images
-    cv2.imshow("images", np.hstack([image, output]))
+    cv2.imshow("images", np.hstack([output]))
     cv2.waitKey(0)
