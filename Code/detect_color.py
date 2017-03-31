@@ -1,8 +1,11 @@
 # import the necessary packages
+from imutils import contours
+from skimage import measure
 import numpy as np
 import argparse
+import imutils
 import cv2
- 
+
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", help = "path to the image")
@@ -24,7 +27,10 @@ for (lower, upper) in boundaries:
 	# find the colors within the specified boundaries and apply
 	# the mask
     mask = cv2.inRange(image, lower, upper)
-    output = cv2.bitwise_and(image, image, mask = mask)
+    thresh = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)[1]
+    thresh = cv2.erode(thresh, None, iterations=2)
+    thresh = cv2.dilate(thresh, None, iterations=4)
+    output = cv2.bitwise_and(image, image, thresh = thresh)
  
         # show the images
     cv2.imshow("images", np.hstack([output]))
