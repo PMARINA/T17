@@ -27,11 +27,11 @@ for (lower, upper) in boundaries:
 	# find the colors within the specified boundaries and apply
 	# the mask
     mask = cv2.inRange(image, lower, upper)
-    thresh = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)[1]
+    thresh = cv2.threshold(mask, 220, 255, cv2.THRESH_BINARY)[1]
     thresh = cv2.erode(thresh, None, iterations=2)
     thresh = cv2.dilate(thresh, None, iterations=4)
-    output = cv2.bitwise_and(image, image, thresh=mask)
+    output = cv2.bitwise_and(image, image, mask=mask)
  
         # show the images
-    cv2.imshow("images", np.hstack([output]))
+    cv2.imshow("images", output)
     cv2.waitKey(0)
