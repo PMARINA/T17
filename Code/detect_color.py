@@ -26,6 +26,6 @@ for (lower, upper) in boundaries:
     mask = cv2.inRange(image, lower, upper)
     output = cv2.bitwise_and(image, image, mask = mask)
  
-	# show the images
+        # show the images
     cv2.imshow("images", np.hstack([output]))
     cv2.waitKey(0)
