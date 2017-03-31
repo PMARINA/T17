@@ -30,7 +30,7 @@ for (lower, upper) in boundaries:
     thresh = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)[1]
     thresh = cv2.erode(thresh, None, iterations=2)
     thresh = cv2.dilate(thresh, None, iterations=4)
-    output = cv2.bitwise_and(image, image, mask=thresh)
+    output = cv2.bitwise_and(image, image, thresh=mask)
  
         # show the images
     cv2.imshow("images", np.hstack([output]))
