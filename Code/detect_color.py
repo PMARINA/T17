@@ -15,6 +15,7 @@ image = cv2.imread(args["image"])
 boundaries = [([245, 245, 245], [255, 255, 255])]
 
 # loop over the boundaries
+#change
 for (lower, upper) in boundaries:
     # create NumPy arrays from the boundaries
     lower = np.array(lower, dtype = "uint8")
