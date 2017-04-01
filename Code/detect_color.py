@@ -7,7 +7,6 @@ import imutils
 import cv2
 
 class detect_color:
-    count=0
     def __init__(self,image):
         self.inputimage=image
         self.image = cv2.imread(inputimage)
