@@ -56,14 +56,31 @@ class Detect_Color:
         #centerx = (extLeft[0]+extRight[0])/2
         #centery = (extTop[1]+extBot[1])/2
 
-       
-        
-        print(len(contours))
+        maxx=0
+        maxy=0
+        minx=0
+        miny=0
+        for x in contours:
+            i=x[0::2]
+            j=x[1::2]
+            for y in i:
+                if y>maxx:
+                    maxx=y
+                else if y<minx:
+                    minx=y
+            for z in j:
+                if z>maxy:
+                    maxy=z
+                else if z<miny:
+                    miny=z
+                 
+        #print(len(contours))
        #print(contours)
-        print(len(contours[0]))
-        print(len(contours[1]))
-        print(len(contours[2]))
-        print(len(contours[100]))
+        #print(len(contours[0]))
+        #print(len(contours[1]))
+        #print(len(contours[2]))
+        #print(len(contours[100]))
+        print(maxx," ",minx," ",maxy," ",miny)
         #cv2.imshow("images",self.output)
         #cv2.waitKey(0)
 
