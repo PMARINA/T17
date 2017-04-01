@@ -33,13 +33,29 @@ class Detect_Color:
      #   coord = np.where(np.all(self.output == (255, 255, 255),axis=-1))
       #  print ( (coord[0], coord[1]))
     def leftright(self):
-        imgray = cv2.cvtColor(self.output,cv2.COLOR_BGR2GRAY)
+        imgray = cv2.cvtColor(self.image,cv2.COLOR_BGR2GRAY)
         ret, thresh = cv2.threshold(imgray,127,255,0)
         im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        cv2.drawContours(self.output,contours,-1,(0,255,0),3))
-        
-        cv2.imshow("images",self.output)
-        cv2.waitKey(0)
+        cv2.drawContours(self.output,contours,-1,(0,255,0),3)
+        contours=contours[0] if imutils.is_cv2() else contours[1]
+        c=max(contours,key=cv2.contourArea)
+            # determine the most extreme points along the contour
+
+            #these are x y values
+        extLeft = tuple(c[c[:, :, 0].argmin()][0]) 
+        extRight = tuple(c[c[:, :, 0].argmax()][0])
+        extTop = tuple(c[c[:, :, 1].argmin()][0])
+        extBot = tuple(c[c[:, :, 1].argmax()][0])
+
+        centerx = (extLeft[0]+extRight[0])/2
+        centery = (extTop[1]+extBot[1])/2
+
+        print(centerx,centery)
+        #cv2.imshow("images",self.output)
+        #cv2.waitKey(0)
+
+
+#6bC6N
 # construct the argument parse and parse the arguments
 #ap = argparse.ArgumentParser()
 #ap.add_argument("-i", "--image", help = "path to the image")
