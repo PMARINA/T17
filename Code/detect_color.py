@@ -56,10 +56,12 @@ class Detect_Color:
         #centerx = (extLeft[0]+extRight[0])/2
         #centery = (extTop[1]+extBot[1])/2
 
+       
+        
         print(len(contours))
-        print(contours)
-        print(contours[0])
-        print(contours[1])
+       #print(contours)
+        print(len(contours[0]))
+        print(len(contours[1]))
         #cv2.imshow("images",self.output)
         #cv2.waitKey(0)
 
