@@ -17,7 +17,7 @@ class Detect_Color:
             mask = cv2.inRange(self.image, lower, upper)
             self.output = cv2.bitwise_and(self.image, self.image, mask=mask)
         
-    def isFlame(self,black_max_bgr=(40, 40, 40)):
+    def isFlame(self,black_max_bgr=(1, 1, 1)):
         
         # use this if you want to check channels are all basically equal
         # I split this up into small steps to find out where your error is coming from
@@ -30,7 +30,7 @@ class Detect_Color:
         return False if np.all(mean_bgr < black_max_bgr) else True        
 
     def leftright(self):
-        coord = np.where(np.all(self.output == (255, 255, 255),axis=None))
+        coord = np.where(np.all(self.output == (255, 255, 255),axis=-1))
         print ( (coord[0], coord[1]))
 
 # construct the argument parse and parse the arguments
