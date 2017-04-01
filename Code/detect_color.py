@@ -8,7 +8,7 @@ import cv2
 
 class Detect_Color:
     def __init__(self,inputimage):
-        self.inputimage=image
+        self.inputimage=inputimage
         self.image = cv2.imread(inputimage)
         self.boundaries = [([220, 220, 220], [255, 255, 255])]
         for (lower, upper) in boundaries:
@@ -17,7 +17,8 @@ class Detect_Color:
             mask = cv2.inRange(self.image, lower, upper)
             self.output = cv2.bitwise_and(self.image, self.image, mask=mask)
         
-    def isFlame(self, black_max_bgr=(40, 40, 40)):
+    def isFlame(self):
+        black_max_bgr=(40, 40, 40)
         # use this if you want to check channels are all basically equal
         # I split this up into small steps to find out where your error is coming from
         mean_bgr_float = np.mean(self.output, axis=(0,1))
