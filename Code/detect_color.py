@@ -1,6 +1,6 @@
 # import the necessary packages
 from imutils import contours
-from skimage import measure
+#from skimage import measure
 import numpy as np
 import argparse
 import imutils
@@ -27,12 +27,12 @@ for (lower, upper) in boundaries:
 	# find the colors within the specified boundaries and apply
 	# the mask
     mask = cv2.inRange(image, lower, upper)
-    thresh = cv2.threshold(mask, 220, 255, cv2.THRESH_BINARY)[1]
-    thresh = cv2.erode(thresh, None, iterations=2)
-    thresh = cv2.dilate(thresh, None, iterations=4)
-    labels = measure.label(thresh, neighbors=8, background=0)
-    mask1 = np.zeros(thresh.shape, dtype="uint8")
-    output = cv2.bitwise_and(image, image, mask1=mask1)
+   # thresh = cv2.threshold(mask, 220, 255, cv2.THRESH_BINARY)[1]
+    #thresh = cv2.erode(thresh, None, iterations=2)
+    #thresh = cv2.dilate(thresh, None, iterations=4)
+    #labels = measure.label(thresh, neighbors=8, background=0)
+    #mask1 = np.zeros(thresh.shape, dtype="uint8")
+    output = cv2.bitwise_and(image, image, mask=mask)
  
         # show the images
     cv2.imshow("images", output)
