@@ -30,7 +30,7 @@ class Detect_Color:
         return False if np.all(mean_bgr < black_max_bgr) else True        
 
     def leftright(self):
-        coord = np.where(np.all(self.output == (255, 255, 255)))
+        coord = np.where(np.all(self.output == (255, 255, 255),axis=None))
         print ( (coord[0], coord[1]))
 
 # construct the argument parse and parse the arguments
