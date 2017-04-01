@@ -36,16 +36,22 @@ class Detect_Color:
         imgray = cv2.cvtColor(self.image,cv2.COLOR_BGR2GRAY)
         ret, thresh = cv2.threshold(imgray,127,255,0)
         im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        #contours = cv2.findContours(thresh,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         cv2.drawContours(self.output,contours,-1,(0,255,0),3)
         contours=contours[0] if imutils.is_cv2() else contours[1]
         c=max(contours,key=cv2.contourArea)
             # determine the most extreme points along the contour
 
             #these are x y values
-        extLeft = tuple(c[c[:, :, 0].argmin()][0]) 
-        extRight = tuple(c[c[:, :, 0].argmax()][0])
-        extTop = tuple(c[c[:, :, 1].argmin()][0])
-        extBot = tuple(c[c[:, :, 1].argmax()][0])
+##        extLeft = tuple(c[c[:, :, 0].argmin()][0]) 
+##        extRight = tuple(c[c[:, :, 0].argmax()][0])
+##        extTop = tuple(c[c[:, :, 1].argmin()][0])
+##        extBot = tuple(c[c[:, :, 1].argmax()][0])
+
+        extLeft = tuple(c[c[0].argmin()][0]) 
+        extRight = tuple(c[c[0].argmax()][0])
+        extTop = tuple(c[c[1].argmin()][0])
+        extBot = tuple(c[c[1].argmax()][0])
 
         centerx = (extLeft[0]+extRight[0])/2
         centery = (extTop[1]+extBot[1])/2
