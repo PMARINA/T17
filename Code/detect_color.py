@@ -35,7 +35,7 @@ class Detect_Color:
     def leftright(self):
         imgray = cv2.cvtColor(self.image,cv2.COLOR_BGR2GRAY)
         ret, thresh = cv2.threshold(imgray,127,255,0)
-        im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         cv2.drawContours(self.output,contours,-1,(0,255,0),3)
         contours=contours[0] if imutils.is_cv2() else contours[1]
         c=max(contours,key=cv2.contourArea)
