@@ -6,7 +6,7 @@ import argparse
 import imutils
 import cv2
 
-class detect_color:
+class Detect_color:
     def __init__(self,inputimage):
         self.inputimage=image
         self.image = cv2.imread(inputimage)
