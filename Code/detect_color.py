@@ -29,10 +29,17 @@ class Detect_Color:
         mean_intensity = int(round(np.mean(self.output)))
         return False if np.all(mean_bgr < black_max_bgr) else True        
 
+    #def leftright(self):
+     #   coord = np.where(np.all(self.output == (255, 255, 255),axis=-1))
+      #  print ( (coord[0], coord[1]))
     def leftright(self):
-        coord = np.where(np.all(self.output == (255, 255, 255),axis=-1))
-        print ( (coord[0], coord[1]))
-
+        imgray = cv2.cvtColor(self.output,cv2.COLOR_BGR2GRAY)
+        ret, thresh = cv2.threshold(imgray,127,255,0)
+        im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        cv2.drawContours(self.output,contours,-1,(0,255,0),3))
+        
+        cv2.imshow("images",self.output)
+        cv2.waitKey(0)
 # construct the argument parse and parse the arguments
 #ap = argparse.ArgumentParser()
 #ap.add_argument("-i", "--image", help = "path to the image")
