@@ -62,6 +62,8 @@ class Detect_Color:
        #print(contours)
         print(len(contours[0]))
         print(len(contours[1]))
+        print(len(contours[2]))
+        print(len(contours[100]))
         #cv2.imshow("images",self.output)
         #cv2.waitKey(0)
 
