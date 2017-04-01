@@ -8,7 +8,7 @@ import cv2
 
 class Detect_Color:
     def __init__(self,inputimage):
-        self.inputimage=image
+        self.inputimage=inputimage
         self.image = cv2.imread(inputimage)
         self.boundaries = [([220, 220, 220], [255, 255, 255])]
         for (lower, upper) in boundaries:
