@@ -1,5 +1,6 @@
 import Adafruit_PCA9685
 import picamera
+import Sensor
 dogPos=-1
 front = Sensor.__init__(0,0)
 left = Sensor.__init__(0,0)
