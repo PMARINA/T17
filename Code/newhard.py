@@ -1,3 +1,5 @@
+import Adafruit_PCA9685
+import picamera
 dogPos=-1
 front = Sensor.__init__(0,0)
 left = Sensor.__init__(0,0)
@@ -11,7 +13,10 @@ rightM = Motor.__init__(input)
 #2......1
 #3......4 <-- Room numbers
 flame=True
-               
+servo_min = 150  # Min pulse length out of 4096
+servo_max = 600  # Max pulse length out of 4096
+pwm = Adafruit_PCA9685.PCA9685()
+
 
 def position1():#starts at very beginning
     while front.calcDistance()>129:#facing south in center hallway
@@ -71,11 +76,59 @@ def position2():#starts after looking south on right most hallway
 def position3():#starts after looking south on right most hallway
     position2()
 def forwards():
+    pwm.set_pwm_freq(60)
+    pwm.set_pwm(0,95,600)
+    pwm.set_pwm(1,0,150)
 def backwards():
+    pwm.set_pwm_freq(60)
+    pwm.set_pwm(0,0,150)
+    pwm.set_pwm(1,95,600)
 def turnLeft():
-def turnRight():
+    pwm.set_pwm_freq(60)
+    pwm.set_pwm(1,0,150)
+    time.sleep(1.15)
+    pwm.set_pwm(1,0,0)
+def turnRight():   
+    pwm.set_pwm_freq(60)
+    pwm.set_pwm(0,0,600)
+    time.sleep(1.2)
+    pwm.set_pwm(0,0,0)
 def stop():
+    pwm.set_pwm(0,0,0)
+    pwm.set_pwm(1,0,0)
 def scanRoom1():
+    pwm.set_pwm_freq(60)
+    pwm.set_pwm(0,600,600)
+    pwm.set_pwm(1,150,150)
+    time.sleep(1.2/2)
+    pwm.set_pwm(0,0,0)
+    pwm.set_pwm(1,0,0)
+    camera=picamera.PiCamera()
+    camera.capture('image.png')
+    detectcolor=Detect_Color('image.png')
+    if detectcolor.isFlame():
+        lr=""
+        while lr!="none": 
+            lr=detectcolor.leftright()
+            if lr=="left":
+                pwm.set_pwm_freq(60)
+                pwm.set_pwm(1,0,150)
+                time.sleep(0.3)
+                pwm.set_pwm(1,0,0)
+            elif lr=="right":
+                pwm.set_pwm_freq(60)
+                pwm.set_pwm(0,0,600)
+                time.sleep(0.3)
+                pwm.set_pwm(0,0,0)
+        pwm.set_pwm(2,0,150)
+        time.sleep(10)
+        pwm.set_pwm(2,0,600)
+    time.sleep(1)
+    pwm.set_pwm(0,150,150)
+    pwm.set_pwm(1,600,600)
+    time.sleep(1.2)
+    pwm.set_pwm(1,0,0)
+    pwm.set_pwm(0,0,0)
 def scanRoom2():
     scanRoom1()
 def scanRoom3():
@@ -84,11 +137,18 @@ def scanRoom4():#robot starst from center of room on x axis
     scanRoom1()
 def stabilize():
     if left.calcDistance()<10:
-        #insert code for slight right turn
+        pwm.set_pwm_freq(60)
+        pwm.set_pwm(0,0,600)
+        time.sleep(0.3)
+        pwm.set_pwm(0,0,0)
     if right.calcDistance()<10:
-        #insert code for slight left turn
+        pwm.set_pwm_freq(60)
+        pwm.set_pwm(1,0,150)
+        time.sleep(0.3)
+        pwm.set_pwm(1,0,0)
 def killmovement():#basically a very prolonged stop()
-    
+    while True:
+        stop()
 def main():
     if front.calcDistance()<50:
         #Dog in front, facing right

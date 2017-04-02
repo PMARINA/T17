@@ -107,11 +107,6 @@ void setup(){
   sei();//enable interrupts
   
   analogReference(DEFAULT);
-  
-  while(true) {
-    Serial.println(analogRead(A2));
-    delay(80);
-  }
 }
 
 ISR(ADC_vect) {//when new ADC value ready
@@ -131,15 +126,16 @@ ISR(ADC_vect) {//when new ADC value ready
     
     timer++;//increment timer at rate of 38.5kHz
   }
-  pinMode(6,INPUT)
+  pinMode(6,INPUT);
 }
   boolean a = false;
 void loop(){
-  a = a ||　Ｓｅｒｉａｌ．read（）＝＝　＂ｆｉｒｅ＂；
-  ｉｆ（ａ）ｄｉｇｉｔａｌＷｒｉｔｅ（６，ＨＩＧＨ）
-  while(Serial.read()!="fire"){
-    digitalWrite(d6,i)
+  if(not a){
+    a = Serial.readString().equals("fire");
   }
-  
+  if(a){
+    digitalWrite(5,LOW);
+    digitalWrite(6,HIGH);  
+  }
 }
 
