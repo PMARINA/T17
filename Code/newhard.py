@@ -77,15 +77,18 @@ def turnRight():
 def stop():
 def scanRoom1():
 def scanRoom2():
+    scanRoom1()
 def scanRoom3():
+    scanRoom1()
 def scanRoom4():#robot starst from center of room on x axis
+    scanRoom1()
 def stabilize():
     if left.calcDistance()<10:
         #insert code for slight right turn
     if right.calcDistance()<10:
         #insert code for slight left turn
 def killmovement():#basically a very prolonged stop()
-
+    
 def main():
     if front.calcDistance()<50:
         #Dog in front, facing right
