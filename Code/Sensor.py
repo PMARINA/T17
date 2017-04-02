@@ -7,14 +7,16 @@ class Sensor:
     def getTime(self):
         GPIO.setmode(GPIO.BOARD)#move to constructor?
         GPIO.setup(self.trigger,GPIO.OUT)
-        GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.output(self.trigger,TRUE)
+        GPIO.setup(self.echo, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.output(self.trigger,True)
         millis1=int(round(time.time()*1000))
-        while TRUE:
-            if GPIO.input(self.echo):
+        long = time.time()
+        while True:
+            if GPIO.input(self.echo)==1:
                 break;
         millis2=int(round(time.time()*1000))
-        return millis2-millis1
+        longer = time.time()
+        return millis2-millis1 #longer-long
     def calcDistance(self):
         dist1=self.getTime()*0.028+1.093
         return dist1

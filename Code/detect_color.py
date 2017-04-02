@@ -33,11 +33,42 @@ class Detect_Color:
      #   coord = np.where(np.all(self.output == (255, 255, 255),axis=-1))
       #  print ( (coord[0], coord[1]))
     def leftright(self):
-        imgray = cv2.cvtColor(self.image,cv2.COLOR_BGR2GRAY)
-        ret, thresh = cv2.threshold(imgray,127,255,0)
-        im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        gray=cv2.cvtColor(self.output,cv2.COLOR_BGR2GRAY)
+        gray=cv2.GaussianBlur(gray,(5,5),0)
+        thresh = cv2.threshold(gray,45,255,cv2.THRESH_BINARY)[1]
+        thresh = cv2.erode(thresh,None,iterations=2)
+        thresh = cv2.dilate(thresh,None, iterations=2)
+
+        cnts=cv2.findContours(thresh.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+        cnts = cnts[0] if imutils.is_cv2() else cnts[1]
+        c=max(cnts,key=cv2.contourArea)
+
+        extLeft = tuple(c[c[:, :, 0].argmin()][0]) 
+        extRight = tuple(c[c[:, :, 0].argmax()][0])
+        extTop = tuple(c[c[:, :, 1].argmin()][0])
+        extBot = tuple(c[c[:, :, 1].argmax()][0])
+
+        #print(extLeft)
+        #print(extRight)
+        #print(extTop)
+        #print(extBot)
+        #images are 2592x1944 px
+
+        centerx = (extLeft[0]+extRight[0])/2
+        centery = (extTop[1]+extBot[1])/2        
+
+        #print(centerx," ", centery)
+        #midway is 1296
+        if centerx>1306:
+            return "right"
+        if centerx<1286:
+            return "left"
+        
+        #imgray = cv2.cvtColor(self.image,cv2.COLOR_BGR2GRAY)
+        #ret, thresh = cv2.threshold(imgray,127,255,0)
+        #im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         #contours = cv2.findContours(thresh,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        cv2.drawContours(self.output,contours,-1,(0,255,0),3)
+        #cv2.drawContours(self.output,contours,-1,(0,255,0),3)
         #contours=contours[0] if imutils.is_cv2() else contours[1]
         #c=max(contours,key=cv2.contourArea)
             # determine the most extreme points along the contour
@@ -55,24 +86,26 @@ class Detect_Color:
 
         #centerx = (extLeft[0]+extRight[0])/2
         #centery = (extTop[1]+extBot[1])/2
-
-        maxx=0
-        maxy=0
-        minx=0
-        miny=0
-        for x in contours:
-            i=x[0::2]
-            j=x[1::2]
-            for y in i:
-                if y>maxx:
-                    maxx=y
-                else if y<minx:
-                    minx=y
-            for z in j:
-                if z>maxy:
-                    maxy=z
-                else if z<miny:
-                    miny=z
+##        maxx=0
+##        maxy=0
+##        minx=0
+##        miny=0
+##        for x in contours:
+##            i=x[0::2]
+##            j=x[1::2]
+##            print(i)
+##            print(j)
+##            print(x)
+##            for y in i:
+##                if y>maxx:
+##                    maxx=y
+##                elif y<minx:
+##                    minx=y
+##            for z in j:
+##                if z>maxy:
+##                    maxy=z
+##                elif z<miny:
+##                    miny=z
                  
         #print(len(contours))
        #print(contours)
@@ -80,7 +113,7 @@ class Detect_Color:
         #print(len(contours[1]))
         #print(len(contours[2]))
         #print(len(contours[100]))
-        print(maxx," ",minx," ",maxy," ",miny)
+        #print(maxx," ",minx," ",maxy," ",miny)
         #cv2.imshow("images",self.output)
         #cv2.waitKey(0)
 
