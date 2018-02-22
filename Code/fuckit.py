@@ -38,6 +38,7 @@ def set_servo_pulse(channel, pulse):
 pwm.set_pwm_freq(60)
 pwm.set_pwm(2,0,600)
 time.sleep(10)
+#Comment!!!
 pwm.set_pwm(2,0,150)
 time.sleep(10)
 pwm.set_pwm(2,0,0)
