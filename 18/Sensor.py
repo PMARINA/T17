@@ -12,8 +12,8 @@ class Sensor:
         GPIO.setmode(GPIO.BCM)
 
         # set GPIO Pins
-        GPIO_TRIGGER = trigger  # 9#23 #24
-        GPIO_ECHO = echo  # 0#16 #12
+        self.GPIO_TRIGGER = trigger  # 9#23 #24
+        self.GPIO_ECHO = echo  # 0#16 #12
 
         # set GPIO direction (IN / OUT)
         GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
