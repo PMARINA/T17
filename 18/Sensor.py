@@ -1,7 +1,9 @@
 #Libraries
 import RPi.GPIO as GPIO
 import time
- 
+class Sensor:
+	def __init__(self,echo,trigger):
+		
 #GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
  
@@ -39,7 +41,7 @@ def distance():
     distance = (TimeElapsed * 34300) / 2
  
     return distance
- 
+#Main code only to be run for diagnostics 
 if __name__ == '__main__':
     try:
         while True:
