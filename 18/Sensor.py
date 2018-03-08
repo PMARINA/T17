@@ -16,8 +16,8 @@ class Sensor:
         self.GPIO_ECHO = echo  # 0#16 #12
 
         # set GPIO direction (IN / OUT)
-        GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
-        GPIO.setup(GPIO_ECHO, GPIO.IN)
+        GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
+        GPIO.setup(self.GPIO_ECHO, GPIO.IN)
 
     def distance(self):
         # set Trigger to HIGH
