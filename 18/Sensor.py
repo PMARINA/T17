@@ -5,6 +5,9 @@ import RPi.GPIO as GPIO
 
 
 class Sensor:
+    GPIO_TRIGGER = -1
+    GPIO_ECHO = -1
+
     def __init__(self, echo, trigger):
         GPIO.setmode(GPIO.BCM)
 
@@ -18,21 +21,21 @@ class Sensor:
 
     def distance(self):
         # set Trigger to HIGH
-        GPIO.output(GPIO_TRIGGER, True)
+        GPIO.output(self.GPIO_TRIGGER, True)
 
         # set Trigger after 0.01ms to LOW
         time.sleep(0.00001)
-        GPIO.output(GPIO_TRIGGER, False)
+        GPIO.output(self.GPIO_TRIGGER, False)
 
         StartTime = time.time()
         StopTime = time.time()
 
         # save StartTime
-        while GPIO.input(GPIO_ECHO) == 0:
+        while GPIO.input(self.GPIO_ECHO) == 0:
             StartTime = time.time()
 
         # save time of arrival
-        while GPIO.input(GPIO_ECHO) == 1:
+        while GPIO.input(self.GPIO_ECHO) == 1:
             StopTime = time.time()
 
         # time difference between start and arrival
