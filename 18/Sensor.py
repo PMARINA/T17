@@ -49,7 +49,7 @@ if __name__ == '__main__':
     try:
         s1 = Sensor(19, 26)  # Hardcoded pin numbers, change if applicable
         while True:
-            dist = distance()
+            dist = s1.distance()
             print ("Measured Distance = %.1f cm" % dist)
             time.sleep(1)
 
