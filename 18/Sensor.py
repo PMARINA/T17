@@ -5,6 +5,9 @@ import RPi.GPIO as GPIO
 
 
 class Sensor:
+    GPIO_TRIGGER = -1
+    GPIO_ECHO = -1
+
     def __init__(self, echo, trigger):
         GPIO.setmode(GPIO.BCM)
 
