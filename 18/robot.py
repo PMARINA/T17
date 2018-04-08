@@ -17,47 +17,46 @@ class Robot:
     global camera
 
     def __init__(self):
-        leftSensor = sensor.Sensor(23, 24)
-        rightSensor = sensor.Sensor(17, 27)
-        frontSensor = sensor.Sensor(5, 6)
+        self.leftSensor = sensor.Sensor(23, 24)
+        self.rightSensor = sensor.Sensor(17, 27)
+        self.frontSensor = sensor.Sensor(5, 6)
 
-        leftMotor = motor.Motor(0)
-        rightMotor = motor.Motor(1)
+        self.leftMotor = motor.Motor(0)
+        self.rightMotor = motor.Motor(1)
 
-        vv = versaValve.Versa()
-        cam = camera.Camera()
+        self.vv = versaValve.Versa()
+        self.cam = camera.Camera()
         print("Robot intialized")
 
     def forwards(self):
-        leftMotor.run(7000)
-        rightMotor.run(1000)
+        self.leftMotor.run(7000)
+        self.rightMotor.run(1000)
 
     def turnRight(self):
-        leftMotor.run(7000)
-        rightMotor.run(0)
-        time.sleep(1)
+        self.leftMotor.run(7000)
+        self.rightMotor.run(0)
 
     def turnLeft(self):
-        leftMotor.run(1000)
-        rightMotor.run(7000)
+        self.leftMotor.run(1000)
+        self.rightMotor.run(7000)
 
     def backwards(self):
-        leftMotor.run(7000)
-        rightMotor.run(1000)
+        self.leftMotor.run(7000)
+        self.rightMotor.run(1000)
 
     def pressureCheck(self):
-        vv.open()
+        self.vv.open()
         time.sleep(0.5)
-        vv.close()
+        self.vv.close()
 
     def extinguish(self):
-        vv.open()
+        self.vv.open()
         time.sleep(10)
-        vv.close()
+        self.vv.close()
 
     def stop(self):
-        leftMotor.run(0)
-        rightMotor.run(0)
+        self.leftMotor.run(0)
+        self.rightMotor.run(0)
 
     def testMotors(self):
         forwards()
