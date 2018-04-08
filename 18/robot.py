@@ -13,7 +13,7 @@ class Robot:
     leftMotor = motor.Motor(0)
     rightMotor = motor.Motor(1)
 
-    versaValve = versaValve.Versa()
+    vv = versaValve.Versa()
     camera = camera.Camera()
 
     def __init__(self):
@@ -37,14 +37,14 @@ class Robot:
         rightMotor.run(1000)
 
     def pressureCheck(self):
-        versaValve.open()
+        vv.open()
         time.sleep(0.5)
-        versaValve.close()
+        vv.close()
 
     def extinguish(self):
-        versaValve.open()
+        vv.open()
         time.sleep(10)
-        versaValve.close()
+        vv.close()
 
     def stop(self):
         leftMotor.run(0)
