@@ -59,10 +59,10 @@ class Robot:
         self.rightMotor.run(0)
 
     def testMotors(self):
-        forwards()
+        self.forwards()
         time.sleep(1)
-        stop()
+        self.stop()
         time.sleep(1)
-        backwards()
+        self.backwards()
         time.sleep(1)
-        stop()
+        self.stop()
