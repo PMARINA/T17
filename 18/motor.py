@@ -17,10 +17,10 @@ class Motor:
     dev = ser
 
     def __init__(self, n):
-        id = n
+        self.id = n
 
     def run(self, n):
         print('M'.strip() + str(self.id).strip() +
               str(n).strip())
         self.dev.write(bytes('M'.strip() + str(self.id).strip() +
-                             str(n).strip(), encoding='utf-8'))
+                             str(n.zfill(4)).strip(), encoding='utf-8'))
