@@ -20,4 +20,4 @@ class Motor:
         id = n
 
     def run(self, n):
-        self.dev.write(bytes(n, encoding='utf-8'))
+        self.dev.write(bytes(str(n), encoding='utf-8'))
