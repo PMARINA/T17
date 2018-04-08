@@ -8,7 +8,7 @@ class Sensor:
     GPIO_TRIGGER = -1
     GPIO_ECHO = -1
 
-    def __init__(self, echo, trigger):
+    def __init__(self, trigger, echo):
         GPIO.setmode(GPIO.BCM)
 
         # set GPIO Pins
@@ -50,7 +50,7 @@ class Sensor:
 # Main code only to be run for diagnostics
 if __name__ == '__main__':
     try:
-        s1 = Sensor(19, 26)  # Hardcoded pin numbers, change if applicable
+        s1 = Sensor(6, 5)  # Hardcoded pin numbers, change if applicable
         while True:
             dist = s1.distance()
             print ("Measured Distance = %.1f cm" % dist)
