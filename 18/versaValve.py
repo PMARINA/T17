@@ -6,8 +6,8 @@ class Versa:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(21, GPIO.OUT)
 
-    def open():
+    def open(self):
         GPIO.output(21, GPIO.LOW)
 
-    def close():
+    def close(self):
         GPIO.output(21, GPIO.HIGH)
