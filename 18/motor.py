@@ -20,5 +20,7 @@ class Motor:
         id = n
 
     def run(self, n):
+        print('M'.strip() + str(id).strip() +
+              str(n).strip())
         self.dev.write(bytes('M'.strip() + str(id).strip() +
                              str(n).strip(), encoding='utf-8'))
