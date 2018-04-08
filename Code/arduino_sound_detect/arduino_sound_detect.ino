@@ -21,8 +21,8 @@
 boolean clipping = 0;
 boolean doneWithSound = false;
 
-const int CLIPLED = 13;
-const int CORRLED = 2;
+//const int CLIPLED = 13;
+//const int CORRLED = 2;
 
 //data storage variables
 byte newData = 0;
