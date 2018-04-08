@@ -20,4 +20,4 @@ class Motor:
         id = n
 
     def run(self, n):
-        dev.write(n)
+        self.dev.write(n)
