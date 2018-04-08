@@ -6,15 +6,15 @@ import time
 
 
 class Robot:
-    global leftSensor = sensor.Sensor(23, 24)
-    global rightSensor = sensor.Sensor(17, 27)
-    global frontSensor = sensor.Sensor(5, 6)
+    global leftSensor
+    global rightSensor
+    global frontSensor
 
-    global leftMotor = motor.Motor(0)
-    global rightMotor = motor.Motor(1)
+    global leftMotor
+    global rightMotor
 
-    global vv = versaValve.Versa()
-    global camera = camera.Camera()
+    global vv
+    global camera
 
     def __init__(self):
         leftSensor = sensor.Sensor(23, 24)
