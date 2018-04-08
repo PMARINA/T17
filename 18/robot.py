@@ -31,6 +31,15 @@ class Robot:
         leftMotor.run(1000)
         rightMotor.run(7000)
 
+    def backwards(self):
+        leftMotor.run(7000)
+        rightMotor.run(1000)
+
+    def pressureCheck(self):
+        versaValve.open()
+        time.sleep(0.5)
+        versaValve.close()
+
     def extinguish(self):
         versaValve.open()
         time.sleep(10)
@@ -39,3 +48,12 @@ class Robot:
     def stop(self):
         leftMotor.run(0)
         rightMotor.run(0)
+
+    def testMotors(self)
+        forwards()
+        time.sleep(1)
+        stop()
+        time.sleep(1)
+        backwards()
+        time.sleep(1)
+        stop()
