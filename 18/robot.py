@@ -50,7 +50,7 @@ class Robot:
         leftMotor.run(0)
         rightMotor.run(0)
 
-    def testMotors(self)
+    def testMotors(self):
         forwards()
         time.sleep(1)
         stop()
