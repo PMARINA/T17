@@ -7,7 +7,7 @@ class Versa:
         GPIO.setup(21, GPIO.OUT)
 
     def open(self):
-        GPIO.output(21, GPIO.LOW)
+        GPIO.output(21, GPIO.HIGH)
 
     def close(self):
-        GPIO.output(21, GPIO.HIGH)
+        GPIO.output(21, GPIO.LOW)

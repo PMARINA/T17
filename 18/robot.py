@@ -18,24 +18,24 @@ class Robot:
         def __init__(self):
             print("Robot intialized")
 
-    def forwards():
+    def forwards(self):
         leftMotor.run(7000)
         rightMotor.run(1000)
 
-    def turnRight():
+    def turnRight(self):
         leftMotor.run(7000)
         rightMotor.run(0)
         time.sleep(1)
 
-    def turnLeft():
+    def turnLeft(self):
         leftMotor.run(1000)
         rightMotor.run(7000)
 
-    def extinguish():
+    def extinguish(self):
         versaValve.open()
         time.sleep(10)
         versaValve.close()
 
-    def stop():
+    def stop(self):
         leftMotor.run(0)
         rightMotor.run(0)

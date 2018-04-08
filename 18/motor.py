@@ -19,5 +19,5 @@ class Motor:
     def __init__(self, n):
         id = n
 
-    def run(n):
+    def run(self, n):
         dev.write(n)
