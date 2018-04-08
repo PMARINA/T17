@@ -17,6 +17,15 @@ class Robot:
     camera = camera.Camera()
 
     def __init__(self):
+        leftSensor = sensor.Sensor(23, 24)
+        rightSensor = sensor.Sensor(17, 27)
+        frontSensor = sensor.Sensor(5, 6)
+
+        leftMotor = motor.Motor(0)
+        rightMotor = motor.Motor(1)
+
+        vv = versaValve.Versa()
+        camera = camera.Camera()
         print("Robot intialized")
 
     def forwards(self):
