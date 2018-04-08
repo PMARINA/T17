@@ -16,10 +16,20 @@ class Robot:
     versaValve = Versa()
     camera = camera.Camera()
 
-        forwards():
-            leftMotor.run(7000)
-            rightMotor.run(1000)
-        turnRight():
-            leftMotor.run(7000)
+    forwards():
+        leftMotor.run(7000)
+        rightMotor.run(1000)
+    turnRight():
+        leftMotor.run(7000)
+        rightMotor.run(0)
+        time.sleep(1)
+    turnLeft():
+        leftMotor.run(1000)
+        rightMotor.run(7000)
+        extinguish():
+            versaValve.open()
+            time.sleep(10)
+            versaValve.close()
+        stop():
+            leftMotor.run(0)
             rightMotor.run(0)
-            time.sleep(1)
