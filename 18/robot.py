@@ -13,7 +13,7 @@ class Robot:
     leftMotor = motor.Motor(0)
     rightMotor = motor.Motor(1)
 
-    versaValve = Versa()
+    versaValve = versaValve.Versa()
     camera = camera.Camera()
         def __init__(self):
             print("Robot intialized")
