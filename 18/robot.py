@@ -25,7 +25,7 @@ class Robot:
         rightMotor = motor.Motor(1)
 
         vv = versaValve.Versa()
-        camera = camera.Camera()
+        cam = camera.Camera()
         print("Robot intialized")
 
     def forwards(self):
