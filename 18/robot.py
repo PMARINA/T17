@@ -15,8 +15,9 @@ class Robot:
 
     versaValve = versaValve.Versa()
     camera = camera.Camera()
-        def __init__(self):
-            print("Robot intialized")
+
+    def __init__(self):
+        print("Robot intialized")
 
     def forwards(self):
         leftMotor.run(7000)
