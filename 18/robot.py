@@ -17,9 +17,9 @@ class Robot:
     global camera
 
     def __init__(self):
-        self.leftSensor = sensor.Sensor(23, 24)
-        self.rightSensor = sensor.Sensor(17, 27)
-        self.frontSensor = sensor.Sensor(5, 6)
+        self.frontSensor = sensor.Sensor(23, 24)
+        self.leftSensor = sensor.Sensor(17, 27)
+        self.rightSensor = sensor.Sensor(5, 6)
 
         self.leftMotor = motor.Motor(0)
         self.rightMotor = motor.Motor(1)
@@ -66,3 +66,5 @@ class Robot:
         self.backwards()
         time.sleep(1)
         self.stop()
+    def printSensors():
+        print("Left: " + self.leftSensor.
